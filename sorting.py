@@ -24,29 +24,37 @@ def read_data(file_name):
         return data
 
 
-def selection_sort(data_list):
+def selection_sort(data_list, direction):
     if not data_list:
         return -1
 
-    i = 0
-    while i < len(data_list):
-        n = i
-        while n < len(data_list):
-            if data_list[n] < data_list[i]:
-                data_list[n], data_list[i] = data_list[i], data_list[n]
-            n += 1
-        i += 1
+    if direction:
+        i = 0
+        while i < len(data_list):
+            n = i
+            while n < len(data_list):
+                if data_list[n] < data_list[i]:
+                    data_list[n], data_list[i] = data_list[i], data_list[n]
+                n += 1
+            i += 1
+    else:
+        i = 0
+        while i < len(data_list):
+            n = i
+            while n < len(data_list):
+                if data_list[n] > data_list[i]:
+                    data_list[n], data_list[i] = data_list[i], data_list[n]
+                n += 1
+            i += 1
+
     return data_list
 
 
 def main():
     data = read_data("numbers.csv")
     print(data["series_1"])
-    print(selection_sort(data["series_1"]))
-    print(data["series_2"])
-    print(selection_sort(data["series_2"]))
-    print(data["series_3"])
-    print(selection_sort(data["series_3"]))
+    print(selection_sort(data["series_1"], True))
+    print(selection_sort(data["series_1"], False))
     print(data)
 
 
