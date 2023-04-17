@@ -69,6 +69,25 @@ def bubble_sort(data_list):
     return data_list
 
 
+def insertion_sort(data_list):
+    if not data_list:
+        return -1
+
+    sorted_idx = 0
+    while sorted_idx < len(data_list):
+        if sorted_idx+1 < len(data_list) and data_list[sorted_idx] > data_list[sorted_idx+1]:
+            tmp = data_list[sorted_idx+1]
+            i = 0
+            while sorted_idx-i >= 0 and data_list[sorted_idx-i] > tmp:
+                #print(data_list)
+                data_list[sorted_idx-i+1] = data_list[sorted_idx-i]
+                i += 1
+            #print(tmp, sorted_idx-i+1)
+            data_list[sorted_idx-i+1] = tmp
+        sorted_idx += 1
+    return data_list
+
+
 def main():
     data = read_data("numbers.csv")
     print("series_1:", data["series_1"])
@@ -77,6 +96,9 @@ def main():
 
     print("\n series_2:", data["series_2"])
     print("Bubble Sort on series_2:", bubble_sort(data["series_2"]))
+
+    print("\n series_3:", data["series_3"])
+    print("Insertion Sort on series_3:", insertion_sort(data["series_3"]))
     #print("\n", data)
 
 
