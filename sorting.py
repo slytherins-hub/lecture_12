@@ -50,12 +50,34 @@ def selection_sort(data_list, direction):
     return data_list
 
 
+def bubble_sort(data_list):
+    if not data_list:
+        return -1
+
+    swaped = True
+    i = 0
+    while swaped and i < 1000:
+        swaped = False
+        n = 0
+        while n < len(data_list):
+            if n+1 < len(data_list) and data_list[n] > data_list[n+1]:
+                data_list[n], data_list[n+1] = data_list[n+1], data_list[n]
+                swaped = True
+            n += 1
+        i += 1
+
+    return data_list
+
+
 def main():
     data = read_data("numbers.csv")
-    print(data["series_1"])
-    print(selection_sort(data["series_1"], True))
-    print(selection_sort(data["series_1"], False))
-    print(data)
+    print("series_1:", data["series_1"])
+    print("Selection Sort upwards on series_1:", selection_sort(data["series_1"], True))
+    print("Selection Sort downwards on series_1:", selection_sort(data["series_1"], False))
+
+    print("\n series_2:", data["series_2"])
+    print("Bubble Sort on series_2:", bubble_sort(data["series_2"]))
+    #print("\n", data)
 
 
 if __name__ == '__main__':
