@@ -42,6 +42,16 @@ def bubble_sorting(values):
                 pass
     return values
 
+def insertion_sort(values):
+    n = len(values)
+    for i in range(1,n):
+        number = values[i]
+        while k >= 0 and values[k] > number:
+            values[k+1] = values[k]
+            k = k-1
+        values[k+1] = number
+    return values
+
 def main():
     pass
 
@@ -96,6 +106,7 @@ if __name__ == '__main__':
     values_3 = my_data['series_3'].copy()
     values_4 = my_data['series_2'].copy()
     values_5 = my_data['series_3'].copy()
+    values_6 = my_data['series_3'].copy()
     print(my_data['series_2'])
     print('selection_sort')
     print(selection_sort(values))
@@ -115,6 +126,10 @@ if __name__ == '__main__':
     print('insertin_sort_2')
     print(values_5)
     print(insertion_sort_2(values_5))
+    print('\n')
+    print('insertin_sort')
+    print(values_6)
+    print(insertion_sort_2(values_6))
 
 
     '''
