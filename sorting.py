@@ -26,22 +26,39 @@ def read_data(file_name):
     return data
 
 
-def selection_sort(numbers_list):
+def selection_sort(numbers, direction='ascending'):
     """
-
-    :param numbers_list:
-    :return:
+    Sort all elements of the sequence according to the principles of Selection Sort.
+    :param numbers: (list) sequence of numbers
+    :param direction: (str) direction of sorting, 'ascending' or 'decending'
+    :return numbers: (list) sorted sequence of numbers according to descending param
     """
-    for i in range(len(numbers_list)):
+    for i in range(len(numbers)):
 
         min_idx = i
-        for j in range(i + 1, len(numbers_list)):
-            if numbers_list[min_idx] > numbers_list[j]:
-                min_idx = j
+        max_idx = i
 
-        numbers_list[i], numbers_list[min_idx] = numbers_list[min_idx], numbers_list[i]
+        if direction == 'ascending':
 
-    return numbers_list
+            for j in range(i + 1, len(numbers)):
+                if numbers[min_idx] > numbers[j]:
+                    min_idx = j
+
+            numbers[i], numbers[min_idx] = numbers[min_idx], numbers[i]
+
+        elif direction == 'descending':
+
+            for j in range(i + 1, len(numbers)):
+                if numbers[max_idx] < numbers[j]:
+                    max_idx = j
+
+            numbers[i], numbers[max_idx] = numbers[max_idx], numbers[i]
+
+        else:
+            print('Please select "descending" or "ascending" option for selection_sort(number_list,___')
+            quit()
+
+    return numbers
 
 
 def main():
